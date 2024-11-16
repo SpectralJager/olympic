@@ -1,0 +1,168 @@
+package view
+
+templ IndexPage() {
+	@BaseLayout() {
+		@IndexNavbar()
+		@IndexHeroSection()
+		@IndexAboutSection()
+		@IndexFeaturesSection()
+		@IndexCallToActionSection()
+		@IndexFooter()
+	}
+}
+
+templ IndexNavbar() {
+	<div class="navbar bg-base-100 fixed z-10 top-0">
+		<div class="flex-1">
+			<a href="/" class="btn btn-ghost text-xl">
+				Olympics AI
+			</a>
+		</div>
+		<div x-data="{showMenu: false}" class="flex-none">
+			<button x-on:click="showMenu = !showMenu" class="btn btn-square btn-ghost">
+				@icon("menu", "")
+			</button>
+			<div
+				id="mobileMenu"
+				x-show="showMenu"
+				x-cloak
+				x-transition
+				class="absolute top-0 right-0 z-20 h-screen w-screen bg-base-300 bg-opacity-70"
+			>
+				<div class="flex flex-col ml-auto w-80 h-full px-4 py-8 bg-base-100">
+					@IndexMobileNav()
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+templ IndexMobileNav() {
+	<div class="flex justify-between items-center">
+		<span class="font-bold">Olympics Menu</span>
+		<button x-on:click="showMenu = !showMenu" class="btn btn-square btn-ghost">
+			@icon("close", "")
+		</button>
+	</div>
+	<div class="flex flex-col gap-2 w-full pr-4">
+		<a
+			x-on:click="showMenu = !showMenu"
+			href="#hero"
+			class="btn justify-start"
+		>
+			@icon("home", "")
+			Home
+		</a>
+		<a
+			x-on:click="showMenu = !showMenu"
+			href="#about"
+			class="btn justify-start"
+		>
+			@icon("category", "")
+			About
+		</a>
+		<a
+			x-on:click="showMenu = !showMenu"
+			href="#features"
+			class="btn justify-start"
+		>
+			@icon("star", "")
+			Features
+		</a>
+		<a
+			x-on:click="showMenu = !showMenu"
+			href="#contacts"
+			class="btn justify-start"
+		>
+			@icon("contacts", "")
+			Contacts
+		</a>
+	</div>
+}
+
+templ IndexHeroSection() {
+	<div id="hero" class="hero bg-base-100 h-screen">
+		<div class="hero-content text-center px-4">
+			<div class="max-w-md">
+				<h1 class="text-4xl font-black uppercase">Personalized exercises is way to your health</h1>
+				<p class="py-4">
+					Created by <span class="text-secondary font-semibold">professionals</span> for beginner and amateur sportsmans who want to improve their exercises technics and effectiveness.
+					Already used by <span class="text-primary font-semibold">1200+</span> peoples!
+				</p>
+				<button class="btn btn-primary">Try today for free</button>
+			</div>
+		</div>
+	</div>
+}
+
+templ IndexAboutSection() {
+	<div id="about" class="flex flex-col justify-center text-center bg-base-200 w-full px-4 py-8">
+		<h1 class="text-2xl font-bold ">About</h1>
+		<p class="py-4">
+			Olympics AI is WEB (and in the future mobile) application, 
+			that allows you to increase effectiveness and correctness of your exercises
+			with help of personalized AI assistant.
+			He will control your progress and give you recommendations for
+			better technics to do exercises and best food control.
+		</p>
+	</div>
+}
+
+templ IndexFeaturesSection() {
+	{{
+	features := []struct {
+		image string
+		text  string
+	}{
+		{
+			image: "ai.png",
+			text:  "Personalized AI assistant for training and food control",
+		},
+		{
+			image: "exercise.png",
+			text:  "Various trainings in Yoga, Calisthenics and others...",
+		},
+		{
+			image: "difficulties.png",
+			text:  "Various difficulty levels of trainings and exercises",
+		},
+		{
+			image: "goal.png",
+			text:  "7, 14 and 30 days exercise challenges and competitions",
+		},
+		{
+			image: "program.png",
+			text:  "Well prepared training programs",
+		},
+		{
+			image: "market.png",
+			text:  "Training market for professionals and coaches",
+		},
+	}
+	}}
+	<div id="features" class="flex flex-col gap-4 text-center bg-base-100 w-full px-2 py-8">
+		<h1 class="text-2xl font-bold ">Features</h1>
+		<div class="flex flex-wrap justify-center gap-6 py-2 px-4">
+			for _, feature := range features {
+				@FeatureItem(feature.image, feature.text)
+			}
+		</div>
+	</div>
+}
+
+templ FeatureItem(image, text string) {
+	<div class="flex flex-col items-center justify-center max-w-48 gap-4 px-4 py-4 rounded-md bg-base-200">
+		<figure class="size-24">
+			<img src={ "/static/icons/" + image } class="object-fill"/>
+		</figure>
+		<p class="py-4">
+			{ text }
+		</p>
+	</div>
+}
+
+templ IndexCallToActionSection() {
+}
+
+templ IndexFooter() {
+}
