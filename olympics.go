@@ -14,5 +14,5 @@ func Run() {
 	app.GET("*", handler.NotFound)
 	app.GET("/", handler.Index)
 
-	app.Start(":8080")
+	app.Start("0.0.0.0:8080")
 }
