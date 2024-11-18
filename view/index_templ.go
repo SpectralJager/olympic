@@ -295,7 +295,7 @@ func IndexHeroSection() templ.Component {
 			templ_7745c5c3_Var6 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section id=\"hero\" class=\"hero h-screen max-w-7xl lg:w-2/3 mx-auto\"><div class=\"hero-content gap-8 h-full bg-base-100 text-center px-4 lg:flex-row-reverse\"><figure class=\"hidden flex-none w-1/2 max-w-lg rounded-lg shadow-2xl overflow-clip lg:block\"><img src=\"/static/images/hero.jpg\" class=\"object-fill\"></figure><div class=\"w-full max-w-lg flex-1\"><h1 class=\"text-4xl font-black uppercase\">Personalized exercises is way to your health</h1><p class=\"py-4\">Created by <span class=\"text-secondary font-semibold\">professionals</span> for beginner and amateur sportsmans who want to improve their exercises technics and effectiveness. Already used by <span class=\"text-primary font-semibold\">1200+</span> peoples!</p><button class=\"btn btn-primary\">Try today for free")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section id=\"hero\" class=\"hero h-screen max-w-7xl lg:w-2/3 mx-auto\"><div class=\"hero-content gap-8 h-full text-center px-4 lg:flex-row-reverse\"><figure class=\"hidden flex-none w-1/2 max-w-lg rounded-lg shadow-2xl overflow-clip lg:block\"><img src=\"/static/images/hero.jpg\" class=\"object-fill\"></figure><div class=\"w-full max-w-lg flex-1\"><h1 class=\"text-4xl font-black uppercase\">Personalized exercises is way to your health</h1><p class=\"py-4\">Created by <span class=\"text-secondary font-semibold\">professionals</span> for beginner and amateur sportsmans who want to improve their exercises technics and effectiveness. Already used by <span class=\"text-primary font-semibold\">1200+</span> peoples!</p><button class=\"btn btn-primary\">Try today for free")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -391,7 +391,7 @@ func IndexFeaturesSection() templ.Component {
 				text:  "Training's market for professionals and coaches",
 			},
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"bg-base-100 w-full\"><div id=\"features\" class=\"flex flex-col gap-4 text-center max-w-7xl px-2 py-8 lg:w-2/3 mx-auto\"><h1 class=\"text-2xl font-bold \">Why to choose us</h1><div class=\"flex flex-wrap justify-center gap-6 py-2 px-4\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"w-full\"><div id=\"features\" class=\"flex flex-col gap-4 text-center max-w-7xl px-2 py-8 lg:w-2/3 mx-auto\"><h1 class=\"text-2xl font-bold \">Why to choose us</h1><div class=\"flex flex-wrap justify-center gap-6 py-2 px-4\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
