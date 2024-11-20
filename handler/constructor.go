@@ -15,7 +15,6 @@ func NewConstructor() *Constructor {
 
 func (h *Constructor) Handler(c echo.Context) error {
 	switch c.Request().Header.Get("Page-Action") {
-
 	default:
 		return h.view(c)
 	}

@@ -1,5 +1,7 @@
 package view
 
+import "fmt"
+
 templ ConstructorPage() {
 	@BaseLayout() {
 		@ConstructorNavigation()
@@ -26,6 +28,7 @@ templ ConstructorExercises() {
 		class="max-w-7xl px-4 pt-16 bg-base-200"
 	>
 		<div
+			x-on:load="context.exercises = []"
 			x-data="{showed:false}"
 			class="flex flex-col"
 		>
@@ -46,18 +49,33 @@ templ ConstructorExercises() {
 				x-collapse
 				class="flex flex-wrap justify-center pt-2 pb-4 gap-2"
 			>
-				<img src="/static/images/yoga1.webp" class="block size-24 object-center"/>
-				<img src="/static/images/yoga2.webp" class="block size-24 object-center"/>
-				<img src="/static/images/yoga3.webp" class="block size-24 object-center"/>
-				<img src="/static/images/yoga4.webp" class="block size-24 object-center"/>
-				<img src="/static/images/yoga5.webp" class="block size-24 object-center"/>
-				<img src="/static/images/yoga6.webp" class="block size-24 object-center"/>
+				for i := 1; i < 19; i++ {
+					@SelectExerciseCard(i, fmt.Sprintf("/static/images/yoga%d.webp", i))
+				}
 			</div>
 		</div>
 	</section>
 }
 
+templ SelectExerciseCard(indx int, img string) {
+	<img
+		x-on:click={ fmt.Sprintf("context.exercises.push('%s')", img) }
+		src={ img }
+		class="block size-24 object-center"
+	/>
+}
+
 templ ConstructorTrainingArea() {
+	<section class="h-screen w-full px-4 py-4">
+		<div id="training" class="flex flex-wrap gap-2">
+			<template x-for="exercise in context.exercises">
+				<img
+					:src="exercise"
+					class="block size-24 object-center"
+				/>
+			</template>
+		</div>
+	</section>
 }
 
 templ ConstructorFooter() {
