@@ -14,5 +14,7 @@ func Run() {
 	app.GET("*", handler.NotFound)
 	app.GET("/", handler.Index)
 
+	app.GET("/constructor", handler.NewConstructor().Handler)
+
 	app.Start("0.0.0.0:8080")
 }

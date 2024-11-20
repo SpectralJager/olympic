@@ -1,0 +1,65 @@
+package view
+
+templ ConstructorPage() {
+	@BaseLayout() {
+		@ConstructorNavigation()
+		@ConstructorExercises()
+		@ConstructorTrainingArea()
+		@ConstructorFooter()
+	}
+}
+
+templ ConstructorNavigation() {
+	@navbar() {
+		@desktopNav() {
+			@desktopNavItem("Overview", "#")
+		}
+		@mobileNav() {
+			@mobileNavItem("", "Overview", "#")
+		}
+	}
+}
+
+templ ConstructorExercises() {
+	<section
+		id="exercises"
+		class="max-w-7xl px-4 pt-16 bg-base-200"
+	>
+		<div
+			x-data="{showed:false}"
+			class="flex flex-col"
+		>
+			<div class="flex justify-between items-center">
+				<button class="btn btn-ghost btn-square">
+					@icon("chevron_left", "")
+				</button>
+				<button
+					x-on:click="showed = !showed"
+					class="btn btn-ghost"
+				>Yoga</button>
+				<button class="btn btn-ghost btn-square">
+					@icon("chevron_right", "")
+				</button>
+			</div>
+			<div
+				x-show="showed"
+				x-collapse
+				class="flex flex-wrap justify-center pt-2 pb-4 gap-2"
+			>
+				<img src="/static/images/yoga1.webp" class="block size-24 object-center"/>
+				<img src="/static/images/yoga2.webp" class="block size-24 object-center"/>
+				<img src="/static/images/yoga3.webp" class="block size-24 object-center"/>
+				<img src="/static/images/yoga4.webp" class="block size-24 object-center"/>
+				<img src="/static/images/yoga5.webp" class="block size-24 object-center"/>
+				<img src="/static/images/yoga6.webp" class="block size-24 object-center"/>
+			</div>
+		</div>
+	</section>
+}
+
+templ ConstructorTrainingArea() {
+}
+
+templ ConstructorFooter() {
+	@footer()
+}
