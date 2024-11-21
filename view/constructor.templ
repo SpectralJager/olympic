@@ -28,7 +28,6 @@ templ ConstructorExercises() {
 		class="max-w-7xl px-4 pt-16 bg-base-200"
 	>
 		<div
-			x-on:load="context.exercises = []"
 			x-data="{showed:false}"
 			class="flex flex-col"
 		>
@@ -59,23 +58,39 @@ templ ConstructorExercises() {
 
 templ SelectExerciseCard(indx int, img string) {
 	<img
-		x-on:click={ fmt.Sprintf("context.exercises.push('%s')", img) }
+		hx-post="/constructor"
+		hx-headers='{"Page-Action": "append"}'
+		hx-vals={ fmt.Sprintf("{\"value\": \"%s\"}", img) }
+		hx-target="#training"
+		hx-swap="beforeend"
 		src={ img }
 		class="block size-24 object-center"
 	/>
 }
 
 templ ConstructorTrainingArea() {
-	<section class="h-screen w-full px-4 py-4">
-		<div id="training" class="flex flex-wrap gap-2">
-			<template x-for="exercise in context.exercises">
-				<img
-					:src="exercise"
-					class="block size-24 object-center"
-				/>
-			</template>
-		</div>
+	<section x-data class="h-screen w-full px-4 py-4">
+		<ul
+			id="training"
+			x-sort
+			class="flex flex-wrap gap-2"
+		></ul>
 	</section>
+}
+
+templ TrainingExercise(img string) {
+	<li
+		hx-delete="/constructor"
+		hx-headers='{"Page-Action": "remove"}'
+		hx-swap="outerHTML"
+		hx-trigger="dblclick"
+		x-sort:item
+	>
+		<img
+			src={ img }
+			class="block size-24 object-center"
+		/>
+	</li>
 }
 
 templ ConstructorFooter() {

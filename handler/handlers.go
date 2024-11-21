@@ -12,6 +12,10 @@ func render(c echo.Context, component templ.Component) error {
 	return component.Render(c.Request().Context(), c.Response())
 }
 
+func Empty(echo.Context) error {
+	return nil
+}
+
 func NotFound(c echo.Context) error {
 	return c.String(http.StatusNotFound, "not found")
 }

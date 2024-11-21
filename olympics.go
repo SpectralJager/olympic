@@ -15,7 +15,9 @@ func Run() {
 	app.GET("/", handler.Index)
 
 	constructorHandler := handler.NewConstructor()
-	app.GET("/constructor", constructorHandler.Handler)
+	app.GET("/constructor", constructorHandler.GET)
+	app.POST("/constructor", constructorHandler.POST)
+	app.DELETE("/constructor", constructorHandler.DELETE)
 
 	app.Start("0.0.0.0:8080")
 }
