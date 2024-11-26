@@ -22,11 +22,13 @@ templ BaseLayout() {
 			<script defer src="https://unpkg.com/htmx.org@2.0.3"></script>
 			<title>Olympics AI</title>
 		</head>
-		<body class="w-screen">
+		<body
+			class="w-screen h-screen overflow-x-hidden overflow-y-scroll"
+			style="background-image: url('/static/images/bg.svg');"
+		>
 			<div
 				id="app"
 				class="flex flex-col w-full overflow-x-hidden"
-				style="background-image: url('/static/images/bg.svg');"
 			>
 				{ children... }
 			</div>
